@@ -32,3 +32,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Useful Links
+
+- https://nextjs.org/learn/basics/create-nextjs-app/setup
+- https://nextjs.org/docs/api-reference/create-next-app
+- https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable
+- https://blog.jarrodwatts.com/nextjs-eslint-prettier-husky
+- https://google.github.io/styleguide/tsguide.html#source-organization
+- https://nextjs.org/docs/advanced-features/compiler#styled-components
+- https://styled-components.com/docs/tooling#babel-plugin
+- https://styled-components.com/docs/advanced
+- https://nextjs.org/docs/basic-features/eslint#usage-with-other-tools
+- https://github.com/okonet/lint-staged
+- https://typicode.github.io/husky/#/?id=manual
+- https://stackoverflow.com/questions/34746045/set-visual-studio-code-to-be-global-git-editor-on-osx
+- https://nodejs.org/en/download/current/
+- https://docs.github.com/en/authentication/connecting-to-github-with-ssh
