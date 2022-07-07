@@ -1,1 +1,2 @@
-export { StyleProvider } from "./StyleProvider";
+export { default as Head } from './Head';
+export { default as StyleProvider } from './StyleProvider';

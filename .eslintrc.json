@@ -26,6 +26,7 @@
       }
     ],
     "require-jsdoc": "off",
+    "valid-jsdoc": "off",
     "react/prop-types": [0],
     "react/style-prop-object": [2],
     "@typescript-eslint/no-unused-vars": "error",

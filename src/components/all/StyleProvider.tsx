@@ -1,10 +1,10 @@
-import type { ReactElement } from "react";
-import { createContext, useMemo,useState } from "react";
-import { ThemeProvider } from "styled-components";
+import type { ReactElement } from 'react';
+import { createContext, useMemo, useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 
-import { makeTheme, TypeThemeMode } from "@/styles";
+import { makeTheme, TypeThemeMode } from '@/styles';
 
-type Props = {
+export type StyleProviderProps = {
   children: ReactElement;
 };
 
@@ -14,18 +14,16 @@ const ThemeModeContext = createContext({
   },
 });
 
-export const StyleProvider = ({ children }: Props): ReactElement => {
-  const [mode, setMode] = useState<TypeThemeMode>("light");
+const StyleProvider = ({ children }: StyleProviderProps): ReactElement => {
+  const [mode, setMode] = useState<TypeThemeMode>('light');
 
   const colorMode = useMemo(
     () => ({
       toggleThemeMode: () => {
-        setMode((prevMode: TypeThemeMode) =>
-          prevMode === "light" ? "dark" : "light"
-        );
+        setMode((prevMode: TypeThemeMode) => (prevMode === 'light' ? 'dark' : 'light'));
       },
     }),
-    []
+    [],
   );
 
   const theme = useMemo(() => makeTheme(mode), [mode]);
@@ -36,3 +34,5 @@ export const StyleProvider = ({ children }: Props): ReactElement => {
     </ThemeModeContext.Provider>
   );
 };
+
+export default StyleProvider;

@@ -1,2 +1,2 @@
-export type { TypeThemeMode,TypeThemeOptions } from "./theme";
-export { makeTheme } from "./theme";
+export type { TypeThemeMode, TypeThemeOptions } from './theme';
+export { makeTheme } from './theme';
