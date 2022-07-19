@@ -8,16 +8,21 @@
     "dev": "next dev",
     "gen": "graphql-codegen --config codegen.yml --require dotenv/config",
     "lint": "next lint",
+    "autofix": "next lint --fix",
     "start": "next start",
     "prepare": "husky install",
     "pre-commit": "next lint"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
+    "@mui/material": "^5.8.7",
     "next": "12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "^18.2.0",
+    "react-markdown": "^8.0.3",
+    "rehype-raw": "^6.1.1",
+    "rehype-sanitize": "^5.0.1",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {

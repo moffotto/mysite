@@ -1,21 +1,9 @@
 import { NextPage } from 'next';
-import { Fragment } from 'react';
 
-import { ExampleComponent } from '@/atoms';
+import { SexyTemplate } from '@/templates';
 
 const Home: NextPage<unknown> = () => {
-  return (
-    <Fragment>
-      <main>
-        <h1>
-          Welcome to <a href={'https://nextjs.org'}>Next.js!</a>
-        </h1>
-        <ExampleComponent>
-          Get started by editing <code>pages/index.tsx</code>
-        </ExampleComponent>
-      </main>
-    </Fragment>
-  );
+  return <SexyTemplate footer={'back to the top'} main={<h1>Hi! Welcome to my site :)</h1>} />;
 };
 
 export default Home;

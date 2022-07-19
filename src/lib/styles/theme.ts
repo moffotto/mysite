@@ -13,7 +13,7 @@ export type TypeThemeOptions = {
       black: string;
     };
     switch: {
-      white: string;
+      siteBackground: string;
     };
   };
 };
@@ -34,10 +34,10 @@ export function makeTheme(mode: TypeThemeMode) {
       switch: {
         ...(mode === 'light'
           ? {
-              white: 'ffffff',
+              siteBackground: '#fafafa',
             }
           : {
-              white: 'ffffff',
+              siteBackground: '#fafafa',
             }),
       },
     },

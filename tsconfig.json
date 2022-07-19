@@ -18,14 +18,20 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "paths": {
-      "@/*": ["./src/*"],
       "@/public/*": ["./public/*"],
-      "@/all": ["./src/components/all"],
+      "@/*": ["./src/*"],
       "@/pages/*": ["./src/pages/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/all": ["./src/components/all"],
+      "@/atoms": ["./src/components/atoms"],
+      "@/molecules": ["./src/components/molecules"],
+      "@/organisms": ["./src/components/organisms"],
+      "@/templates": ["./src/components/templates"],
+      "@/lib/*": ["./src/lib/*"],
       "@/site": ["./src/lib/site"],
       "@/styles/*": ["./src/lib/styles/*"],
       "@/styles": ["./src/lib/styles"],
-      "@/atoms": ["./src/components/atoms"]
+      "@/types": ["./src/lib/types"]
     },
     "pretty": true,
     "resolveJsonModule": true,
