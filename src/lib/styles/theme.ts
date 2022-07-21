@@ -30,6 +30,7 @@ export function makeTheme(mode: TypeThemeMode) {
       common: {
         white: '#ffffff',
         black: '#000000',
+        shadowOne: '#e4dada',
       },
       switch: {
         ...(mode === 'light'
