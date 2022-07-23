@@ -45,7 +45,7 @@ const SexyTemplate = styled(({ className, id, main, footer }: Props): ReactEleme
       background: ${white};
       border-radius: 4px;
       width: 100%;
-      display: flex;
+      display: block;
       box-shadow: 0px 0px 7px 2px ${shadowOne};
       -moz-box-shadow: 0px 0px 7px 2px ${shadowOne};
       -webkit-box-shadow: 0px 0px 7px 2px ${shadowOne};

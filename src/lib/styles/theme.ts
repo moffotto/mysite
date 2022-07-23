@@ -13,6 +13,7 @@ export type TypeThemeOptions = {
       black: string;
     };
     switch: {
+      typoOne: string;
       siteBackground: string;
     };
   };
@@ -35,9 +36,11 @@ export function makeTheme(mode: TypeThemeMode) {
       switch: {
         ...(mode === 'light'
           ? {
+              typoOne: 'black',
               siteBackground: '#fafafa',
             }
           : {
+              typoOne: 'black',
               siteBackground: '#fafafa',
             }),
       },

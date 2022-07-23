@@ -31,7 +31,8 @@
       "@/site": ["./src/lib/site"],
       "@/styles/*": ["./src/lib/styles/*"],
       "@/styles": ["./src/lib/styles"],
-      "@/types": ["./src/lib/types"]
+      "@/types": ["./src/lib/types"],
+      "@/utils": ["./src/lib/utils"]
     },
     "pretty": true,
     "resolveJsonModule": true,

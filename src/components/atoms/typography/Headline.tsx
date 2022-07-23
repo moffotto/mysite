@@ -7,23 +7,24 @@ import { TypeCommonProps, TypePositioningProps, TypeTypographyProps } from '@/ty
 
 type Props = TypeCommonProps &
   TypePositioningProps &
-  TypeTypographyProps<'div' | 'p' | 'span', 'small' | 'medium' | 'large'> & {
+  TypeTypographyProps<
+    'h2' | 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'span' | 'div',
+    'small' | 'medium' | 'large' | 'xl'
+  > & {
     children?: ReactNode;
-    bold?: boolean;
-    italic?: boolean;
   };
 
-interface IBody {
+interface IHeadline {
   props: Props;
-  defaultComponent: 'div';
+  defaultComponent: 'h2';
 }
 
-const Body: OverridableComponent<IBody> = styled(
+const Headline: OverridableComponent<IHeadline> = styled(
   ({ component, className, id, children, ...rest }: Props): ReactElement => {
-    const Component = component || 'div';
+    const Component = component || 'h2';
 
     return (
-      <Component {...rest} className={`${className} body-root`} id={id ?? undefined}>
+      <Component {...rest} className={`${className} headline-root`} id={id ?? undefined}>
         {children}
       </Component>
     );
@@ -48,25 +49,33 @@ const Body: OverridableComponent<IBody> = styled(
 
     switch (size) {
       case 'small':
-        mobileFS = 12;
-        tabletFS = 14;
-        desktopFS = 16;
+        mobileFS = 20;
+        tabletFS = 30;
+        desktopFS = 40;
         mobileLS = 1.14;
         tabletLS = 1.14;
         desktopLS = 1.14;
         break;
       case 'medium':
-        mobileFS = 14;
-        tabletFS = 16;
-        desktopFS = 18;
+        mobileFS = 20;
+        tabletFS = 30;
+        desktopFS = 40;
+        mobileLS = 1.14;
+        tabletLS = 1.14;
+        desktopLS = 1.14;
+        break;
+      case 'xl':
+        mobileFS = 200;
+        tabletFS = 300;
+        desktopFS = 400;
         mobileLS = 1.14;
         tabletLS = 1.14;
         desktopLS = 1.14;
         break;
       default:
-        mobileFS = 16;
-        tabletFS = 18;
-        desktopFS = 20;
+        mobileFS = 40;
+        tabletFS = 50;
+        desktopFS = 60;
         mobileLS = 1.14;
         tabletLS = 1.14;
         desktopLS = 1.14;
@@ -80,9 +89,11 @@ const Body: OverridableComponent<IBody> = styled(
       justify-items: ${justifyItems ?? 'inherit'};
       align-content: ${alignContent ?? 'inherit'};
       align-items: ${alignItems ?? 'inherit'};
-      font-family: ${override?.fontFamily ? override.fontFamily + ', ' : ''}Inter, sans-serif;
-      font-weight: ${override?.fontWeight ?? 400};
-      color: ${typoOne};
+      font-family: ${
+        override?.fontFamily ? override.fontFamily + ', ' : ''
+      }GlacialIndifference, sans-serif;
+      font-weight: ${override?.fontWeight ?? 700};
+      color: ${override?.color ?? typoOne};
       padding: 12px;
       font-size: ${pxToRem(override?.fontSize?.mobile ?? mobileFS)}rem;
       letter-spacing: ${pxToRem(override?.letterSpacing?.mobile ?? mobileLS)}rem;
@@ -102,4 +113,4 @@ const Body: OverridableComponent<IBody> = styled(
   }}
 `;
 
-export default Body;
+export default Headline;
