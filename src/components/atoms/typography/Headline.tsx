@@ -2,8 +2,8 @@ import { OverridableComponent } from '@mui/material/OverridableComponent';
 import { ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { pxToRem, extractOverrideValues } from '@/utils';
 import { TypeCommonProps, TypePositioningProps, TypeTypographyProps } from '@/types';
+import { extractOverrideValues, pxToRem } from '@/utils';
 
 type Props = TypeCommonProps &
   TypePositioningProps &
@@ -45,7 +45,12 @@ const Headline: OverridableComponent<IHeadline> = styled(
     },
   }) => {
     const override = extractOverrideValues(overrides);
-    let mobileFS, tabletFS, desktopFS, mobileLS, tabletLS, desktopLS;
+    let mobileFS;
+    let tabletFS;
+    let desktopFS;
+    let mobileLS;
+    let tabletLS;
+    let desktopLS;
 
     switch (size) {
       case 'small':

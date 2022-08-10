@@ -1,4 +1,4 @@
-import { TypeOverrides, TypeFontWeights } from '@/types';
+import { TypeFontWeights,TypeOverrides } from '@/types';
 
 /**
  * Pixel values

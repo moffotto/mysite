@@ -1,8 +1,8 @@
 import { NextPage } from 'next';
 import { Fragment } from 'react';
 
+import { Body,Headline } from '@/atoms';
 import { SexyTemplate } from '@/templates';
-import { Headline, Body } from '@/atoms';
 
 const Home: NextPage<unknown> = () => {
   return (
