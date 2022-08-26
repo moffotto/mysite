@@ -1,1 +1,1 @@
-export { default as SexyTemplate } from './Sexy';
+export { default as OpenSkiesTemplate } from './OpenSkies';

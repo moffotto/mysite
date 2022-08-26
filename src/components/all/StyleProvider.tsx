@@ -1,18 +1,13 @@
 import type { ReactElement } from 'react';
-import { createContext, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { ParallaxProvider } from 'react-scroll-parallax';
 import { ThemeProvider } from 'styled-components';
 
-import { makeTheme, TypeThemeMode } from '@/styles';
+import { makeTheme, ThemeModeContext, TypeThemeMode } from '@/styles';
 
 export type StyleProviderProps = {
   children: ReactElement;
 };
-
-const ThemeModeContext = createContext({
-  toggleThemeMode: () => {
-    // Uses 'colorMode' defined below
-  },
-});
 
 const StyleProvider = ({ children }: StyleProviderProps): ReactElement => {
   const [mode, setMode] = useState<TypeThemeMode>('light');
@@ -30,7 +25,9 @@ const StyleProvider = ({ children }: StyleProviderProps): ReactElement => {
 
   return (
     <ThemeModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <ParallaxProvider>{children}</ParallaxProvider>
+      </ThemeProvider>
     </ThemeModeContext.Provider>
   );
 };

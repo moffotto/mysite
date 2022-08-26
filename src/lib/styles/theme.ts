@@ -1,6 +1,7 @@
 export type TypeThemeMode = 'dark' | 'light';
 
 export type TypeThemeOptions = {
+  theme: string;
   breakpoints: {
     mobile: number;
     tablet: number;
@@ -15,12 +16,15 @@ export type TypeThemeOptions = {
     switch: {
       typoOne: string;
       siteBackground: string;
+      openSkiesBackground: string;
+      openSkiesCoverup: string;
     };
   };
 };
 
 export function makeTheme(mode: TypeThemeMode) {
   return {
+    theme: mode,
     breakpoints: {
       mobile: 0,
       tablet: 768,
@@ -38,10 +42,14 @@ export function makeTheme(mode: TypeThemeMode) {
           ? {
               typoOne: 'black',
               siteBackground: '#fafafa',
+              openSkiesBackground: 'linear-gradient(to top left, #265780, #2a5a83)',
+              openSkiesCoverup: '#562a06',
             }
           : {
               typoOne: 'black',
               siteBackground: '#fafafa',
+              openSkiesBackground: 'linear-gradient(to bottom right, #16162f, #000e23)',
+              openSkiesCoverup: 'black',
             }),
       },
     },

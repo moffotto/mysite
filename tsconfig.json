@@ -20,6 +20,7 @@
     "paths": {
       "@/public/*": ["./public/*"],
       "@/*": ["./src/*"],
+      "@/assets/*": ["./src/assets/*"],
       "@/pages/*": ["./src/pages/*"],
       "@/components/*": ["./src/components/*"],
       "@/all": ["./src/components/all"],
@@ -43,6 +44,6 @@
     "target": "es2018",
     "incremental": true
   },
-  "include": ["src", "public", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["./global-types.d.ts", "src", "public", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
