@@ -2,11 +2,12 @@ import { NextPage } from 'next';
 import { Fragment } from 'react';
 
 import { Body, Headline } from '@/atoms';
-import { OpenSkiesTemplate } from '@/templates';
+import { FoliageTemplate } from '@/templates';
 
 const Home: NextPage<unknown> = () => {
   return (
-    <OpenSkiesTemplate
+    <FoliageTemplate
+      backgroundDepth={8}
       footer={'back to the top'}
       main={
         <Fragment>

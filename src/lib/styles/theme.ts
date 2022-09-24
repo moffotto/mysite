@@ -7,6 +7,8 @@ export type TypeThemeOptions = {
     tablet: number;
     desktop: number;
     desktopXl: number;
+    desktopXxl: number;
+    desktopXxxl: number;
   };
   palette: {
     common: {
@@ -30,6 +32,8 @@ export function makeTheme(mode: TypeThemeMode) {
       tablet: 768,
       desktop: 1280,
       desktopXl: 1580,
+      desktopXxl: 1800,
+      desktopXxxl: 2080,
     },
     palette: {
       common: {

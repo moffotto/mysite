@@ -1,13 +1,13 @@
-import NextImage, { ImageProps } from 'next/image';
+import NextImage, { ImageProps as NextImageProps } from 'next/image';
 import type { ReactElement } from 'react';
 
-import { TypeAriaProps,TypeCommonProps } from '@/types';
+import { TypeAriaProps, TypeCommonProps } from '@/types';
 import { clamps } from '@/utils';
 
-type Props = TypeCommonProps &
+export type ImageProps = TypeCommonProps &
   Pick<TypeAriaProps, 'ariaHidden'> &
   Pick<
-    ImageProps,
+    NextImageProps,
     'quality' | 'placeholder' | 'sizes' | 'layout' | 'priority' | 'height' | 'width'
   > & {
     img: StaticImageData;
@@ -43,7 +43,7 @@ const Image = ({
   xCoord,
   yCoord,
   width,
-}: Props): ReactElement => (
+}: ImageProps): ReactElement => (
   <div className={`${className} image-root`}>
     <NextImage
       alt={alt}
