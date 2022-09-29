@@ -25,6 +25,8 @@
       "@/components/*": ["./src/components/*"],
       "@/all": ["./src/components/all"],
       "@/atoms": ["./src/components/atoms"],
+      "@/icons": ["./src/components/atoms/icons"],
+      "@/icons/*": ["./src/components/atoms/icons/*"],
       "@/molecules": ["./src/components/molecules"],
       "@/organisms": ["./src/components/organisms"],
       "@/templates": ["./src/components/templates"],

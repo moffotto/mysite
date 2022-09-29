@@ -20,6 +20,9 @@ export type TypeThemeOptions = {
       siteBackground: string;
       openSkiesBackground: string;
       openSkiesCoverup: string;
+      foliageSiteBackground: string;
+      foliageMainBackground: string;
+      foliageMainDropshadow: string;
     };
   };
 };
@@ -48,12 +51,18 @@ export function makeTheme(mode: TypeThemeMode) {
               siteBackground: '#fafafa',
               openSkiesBackground: 'linear-gradient(to top left, #265780, #2a5a83)',
               openSkiesCoverup: '#562a06',
+              foliageSiteBackground: 'white',
+              foliageMainBackground: 'white',
+              foliageMainDropshadow: '#e4dada',
             }
           : {
               typoOne: 'black',
               siteBackground: '#fafafa',
               openSkiesBackground: 'linear-gradient(to bottom right, #16162f, #000e23)',
               openSkiesCoverup: 'black',
+              foliageSiteBackground: '#000730',
+              foliageMainBackground: '#181819',
+              foliageMainDropshadow: '#171616',
             }),
       },
     },

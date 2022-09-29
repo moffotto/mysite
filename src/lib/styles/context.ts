@@ -1,7 +1,9 @@
 import { createContext } from 'react';
 
-export const ThemeModeContext = createContext({
-  toggleThemeMode: () => {
-    // Uses 'colorMode' defined below
-  },
-});
+const defaultValue = {
+  mode: 'light',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  toggleMode: () => {},
+};
+
+export const ThemeModeContext = createContext(defaultValue);

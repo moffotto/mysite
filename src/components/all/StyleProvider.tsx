@@ -12,19 +12,14 @@ export type StyleProviderProps = {
 const StyleProvider = ({ children }: StyleProviderProps): ReactElement => {
   const [mode, setMode] = useState<TypeThemeMode>('light');
 
-  const colorMode = useMemo(
-    () => ({
-      toggleThemeMode: () => {
-        setMode((prevMode: TypeThemeMode) => (prevMode === 'light' ? 'dark' : 'light'));
-      },
-    }),
-    [],
-  );
+  const toggleColorMode = () => {
+    setMode((prevMode: TypeThemeMode) => (prevMode === 'light' ? 'dark' : 'light'));
+  };
 
   const theme = useMemo(() => makeTheme(mode), [mode]);
 
   return (
-    <ThemeModeContext.Provider value={colorMode}>
+    <ThemeModeContext.Provider value={{ mode: mode, toggleMode: toggleColorMode }}>
       <ThemeProvider theme={theme}>
         <ParallaxProvider>{children}</ParallaxProvider>
       </ThemeProvider>

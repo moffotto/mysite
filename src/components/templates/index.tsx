@@ -1,2 +1,2 @@
-export { default as FoliageTemplate } from './Foliage';
-export { default as OpenSkiesTemplate } from './OpenSkies';
+export { default as TemplateFoliage } from './Foliage';
+export { default as TemplateOpenSkies } from './OpenSkies';
