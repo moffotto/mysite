@@ -1,5 +1,5 @@
 import { OverridableComponent } from '@mui/material/OverridableComponent';
-import { ReactElement, ReactNode } from 'react';
+import { memo,ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { TypeCommonProps, TypePositioningProps, TypeTypographyProps } from '@/types';
@@ -38,52 +38,57 @@ const Headline: OverridableComponent<IHeadline> = styled(
     alignItems,
     overrides,
     theme: {
-      breakpoints: { tablet, desktop },
+      breakpoints: { mobile, tablet, desktop },
       palette: {
         switch: { typoOne },
       },
     },
   }) => {
     const override = extractOverrideValues(overrides);
-    let mobileFS;
-    let tabletFS;
-    let desktopFS;
-    let mobileLS;
-    let tabletLS;
-    let desktopLS;
+    let smallFontSize;
+    let mobileFontSize;
+    let tabletFontSize;
+    let desktopFontSize;
+    let mobileLineSize;
+    let tabletLineSize;
+    let desktopLineSize;
 
     switch (size) {
       case 'small':
-        mobileFS = 20;
-        tabletFS = 30;
-        desktopFS = 40;
-        mobileLS = 1.14;
-        tabletLS = 1.14;
-        desktopLS = 1.14;
+        smallFontSize = 20;
+        mobileFontSize = 20;
+        tabletFontSize = 30;
+        desktopFontSize = 40;
+        mobileLineSize = 1.14;
+        tabletLineSize = 1.14;
+        desktopLineSize = 1.14;
         break;
       case 'medium':
-        mobileFS = 20;
-        tabletFS = 30;
-        desktopFS = 40;
-        mobileLS = 1.14;
-        tabletLS = 1.14;
-        desktopLS = 1.14;
+        smallFontSize = 20;
+        mobileFontSize = 20;
+        tabletFontSize = 30;
+        desktopFontSize = 40;
+        mobileLineSize = 1.14;
+        tabletLineSize = 1.14;
+        desktopLineSize = 1.14;
         break;
       case 'xl':
-        mobileFS = 200;
-        tabletFS = 300;
-        desktopFS = 400;
-        mobileLS = 1.14;
-        tabletLS = 1.14;
-        desktopLS = 1.14;
+        smallFontSize = 100;
+        mobileFontSize = 155;
+        tabletFontSize = 250;
+        desktopFontSize = 350;
+        mobileLineSize = 1.14;
+        tabletLineSize = 1.14;
+        desktopLineSize = 1.14;
         break;
       default:
-        mobileFS = 40;
-        tabletFS = 50;
-        desktopFS = 60;
-        mobileLS = 1.14;
-        tabletLS = 1.14;
-        desktopLS = 1.14;
+        smallFontSize = 40;
+        mobileFontSize = 40;
+        tabletFontSize = 50;
+        desktopFontSize = 60;
+        mobileLineSize = 1.14;
+        tabletLineSize = 1.14;
+        desktopLineSize = 1.14;
         break;
     }
 
@@ -100,22 +105,26 @@ const Headline: OverridableComponent<IHeadline> = styled(
       font-weight: ${override?.fontWeight ?? 700};
       color: ${override?.color ?? typoOne};
       padding: 12px;
-      font-size: ${pxToRem(override?.fontSize?.mobile ?? mobileFS)}rem;
-      letter-spacing: ${pxToRem(override?.letterSpacing?.mobile ?? mobileLS)}rem;
+      font-size: ${pxToRem(smallFontSize)}rem;
+      letter-spacing: ${pxToRem(override?.letterSpacing?.mobile ?? mobileLineSize)}rem;
+
+      @media (min-width: ${mobile}px) {
+        font-size: ${pxToRem(override?.fontSize?.mobile ?? mobileFontSize)}rem;
+      }
 
       @media (min-width: ${tablet}px) {
         padding: 24px;
-        font-size: ${pxToRem(override?.fontSize?.tablet ?? tabletFS)}rem;
-        letter-spacing: ${pxToRem(override?.letterSpacing?.tablet ?? tabletLS)}rem;
+        font-size: ${pxToRem(override?.fontSize?.tablet ?? tabletFontSize)}rem;
+        letter-spacing: ${pxToRem(override?.letterSpacing?.tablet ?? tabletLineSize)}rem;
       }
 
       @media (min-width: ${desktop}px) {
         padding: 32px;
-        font-size: ${pxToRem(override?.fontSize?.desktop ?? desktopFS)}rem;
-        letter-spacing: ${pxToRem(override?.letterSpacing?.desktop ?? desktopLS)}rem;
+        font-size: ${pxToRem(override?.fontSize?.desktop ?? desktopFontSize)}rem;
+        letter-spacing: ${pxToRem(override?.letterSpacing?.desktop ?? desktopLineSize)}rem;
       }
     `;
   }}
 `;
 
-export default Headline;
+export default memo(Headline);

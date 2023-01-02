@@ -1,12 +1,12 @@
-import { Fragment, ReactElement, ReactNode, useContext } from 'react';
+import { Fragment, memo,ReactElement, ReactNode, useContext } from 'react';
 import { Parallax } from 'react-scroll-parallax';
 import styled from 'styled-components';
 
 import FoliageOne from '@/assets/foliage1.webp';
 import FoliageTwo from '@/assets/foliage2.webp';
-import { Image, ImageProps } from '@/atoms';
+import { FallingIconSwitchBtn,Image, ImageProps } from '@/atoms';
+import { ThemeModeContext } from '@/context';
 import { IconMoon, IconSun } from '@/icons';
-import { ThemeModeContext } from '@/styles';
 import { TypeCommonProps } from '@/types';
 
 const FOLIAGE_IMG_HEIGHT = 440;
@@ -16,7 +16,7 @@ type FoliageBackgroundImageProps = Pick<TypeCommonProps, 'className'> &
     row: number;
   };
 
-const FoliageBackgroundImage = styled(
+const FoliageBackgroundImage = memo(styled(
   ({ className, img }: FoliageBackgroundImageProps): ReactElement => (
     <Image
       alt={''}
@@ -30,13 +30,13 @@ const FoliageBackgroundImage = styled(
     top: ${row * FOLIAGE_IMG_HEIGHT}px;
     filter: ${theme === 'light' ? 'none' : 'brightness(0.2)'};
   `}
-`;
+`);
 
 type FoliageBackgroundProps = TypeCommonProps & {
   backgroundDepth: number;
 };
 
-const FoliageBackground = styled(
+const FoliageBackground = memo(styled(
   ({ className, backgroundDepth }: FoliageBackgroundProps): ReactElement => {
     const thingArray = [];
 
@@ -67,9 +67,6 @@ const FoliageBackground = styled(
   ${({
     theme: {
       breakpoints: { tablet, desktop, desktopXl, desktopXxl, desktopXxxl },
-      // palette: {
-      //   switch: { openSkiesCoverup },
-      // },
     },
   }) => `
     width: 100%;
@@ -129,7 +126,7 @@ const FoliageBackground = styled(
       }
     }
   `}
-`;
+`);
 
 type FoliageTemplateProps = TypeCommonProps & {
   children?: ReactNode;
@@ -144,8 +141,20 @@ const FoliageTemplate = styled(
       <Fragment>
         <FoliageBackground backgroundDepth={backgroundDepth ?? 0} />
         <div className={`${className} foliageTemplate-root`} id={id}>
-          <header>
-            <button onClick={toggleMode}>{mode === 'light' ? <IconSun /> : <IconMoon />}</button>
+          <header className={'foliageTemplate-header'}>
+            <FallingIconSwitchBtn
+              ariaLabel={'Toggle dark mode'}
+              ariaPressed={mode === 'dark'}
+              background={'linear-gradient(#000082, orange, yellow)'}
+              circle
+              height={'40px'}
+              icons={[
+                <IconMoon fill={'yellow'} key={`moon`} />,
+                <IconSun fill={'black'} key={`sun`} />,
+              ]}
+              onClick={toggleMode}
+              width={'40px'}
+            />
           </header>
           {children && (
             <Parallax speed={15}>
@@ -183,12 +192,7 @@ const FoliageTemplate = styled(
       padding: 40px 140px;
     }
 
-    & > header {
-      display: flex;
-      justify-content: end;
-    }
-
-    & .foliageTemplate-main {
+    & .foliageTemplate-main, & > header {
       max-width: 1160px;
       width: 100%;
       display: block;
@@ -201,8 +205,10 @@ const FoliageTemplate = styled(
       -moz-box-shadow: 0px 0px 7px 2px ${foliageMainDropshadow};
       -webkit-box-shadow: 0px 0px 7px 2px ${foliageMainDropshadow};
       -o-box-shadow: 0px 0px 7px 2px ${foliageMainDropshadow};
+      padding: 10px 30px;
 
       @media (min-width: ${tablet}px) {
+        padding: 10px 50px;
         border-radius: 30px;
         box-shadow: 0px 0px 7px 2px ${foliageMainDropshadow};
         -moz-box-shadow: 0px 0px 7px 2px ${foliageMainDropshadow};
@@ -211,6 +217,7 @@ const FoliageTemplate = styled(
       }
   
       @media (min-width: ${desktop}px) {
+        padding: 10px 100px;
         border-radius: 40px;
         box-shadow: 0px 0px 7px 2px ${foliageMainDropshadow};
         -moz-box-shadow: 0px 0px 7px 2px ${foliageMainDropshadow};
@@ -240,6 +247,14 @@ const FoliageTemplate = styled(
       }
     }
 
+    & > header {
+      display: flex;
+      justify-content: end;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
     & > .foliageTemplate-footer {
       width: 100%;
       display: flex;
@@ -249,4 +264,4 @@ const FoliageTemplate = styled(
   `}
 `;
 
-export default FoliageTemplate;
+export default memo(FoliageTemplate);

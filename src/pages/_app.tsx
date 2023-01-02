@@ -5,7 +5,7 @@ import Head from 'next/head';
 import type { ReactElement } from 'react';
 import { Fragment } from 'react';
 
-import { StyleProvider } from '@/all';
+import { StyleProvider } from '@/components';
 
 const App = ({ Component, pageProps }: AppProps): ReactElement => {
   return (

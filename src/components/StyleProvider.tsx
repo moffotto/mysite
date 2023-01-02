@@ -1,9 +1,9 @@
-import type { ReactElement } from 'react';
-import { useMemo, useState } from 'react';
+import { memo,ReactElement, useMemo, useState } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { ThemeProvider } from 'styled-components';
 
-import { makeTheme, ThemeModeContext, TypeThemeMode } from '@/styles';
+import { ThemeModeContext } from '@/context';
+import { makeTheme, TypeThemeMode } from '@/styles';
 
 export type StyleProviderProps = {
   children: ReactElement;
@@ -27,4 +27,4 @@ const StyleProvider = ({ children }: StyleProviderProps): ReactElement => {
   );
 };
 
-export default StyleProvider;
+export default memo(StyleProvider);

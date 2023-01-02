@@ -1,5 +1,5 @@
 import { OverridableComponent } from '@mui/material/OverridableComponent';
-import { ReactElement, ReactNode } from 'react';
+import { memo,ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { TypeCommonProps, TypePositioningProps, TypeTypographyProps } from '@/types';
@@ -7,7 +7,7 @@ import { extractOverrideValues, pxToRem } from '@/utils';
 
 type Props = TypeCommonProps &
   TypePositioningProps &
-  TypeTypographyProps<'div' | 'p' | 'span', 'small' | 'medium' | 'large'> & {
+  TypeTypographyProps<'div' | 'p' | 'span', 'small' | 'medium' | 'large' | 'xl'> & {
     children?: ReactNode;
     bold?: boolean;
     italic?: boolean;
@@ -15,12 +15,12 @@ type Props = TypeCommonProps &
 
 interface IBody {
   props: Props;
-  defaultComponent: 'div';
+  defaultComponent: 'p';
 }
 
 const Body: OverridableComponent<IBody> = styled(
   ({ component, className, id, children, ...rest }: Props): ReactElement => {
-    const Component = component || 'div';
+    const Component = component || 'p';
 
     return (
       <Component {...rest} className={`${className} body-root`} id={id ?? undefined}>
@@ -44,12 +44,18 @@ const Body: OverridableComponent<IBody> = styled(
     },
   }) => {
     const override = extractOverrideValues(overrides);
+
     let mobileFS;
     let tabletFS;
     let desktopFS;
+
     let mobileLS;
     let tabletLS;
     let desktopLS;
+
+    let mobileLH;
+    let tabletLH;
+    let desktopLH;
 
     switch (size) {
       case 'small':
@@ -59,6 +65,9 @@ const Body: OverridableComponent<IBody> = styled(
         mobileLS = 1.14;
         tabletLS = 1.14;
         desktopLS = 1.14;
+        mobileLH = 'initial';
+        tabletLH = 'initial';
+        desktopLH = 'initial';
         break;
       case 'medium':
         mobileFS = 14;
@@ -67,6 +76,20 @@ const Body: OverridableComponent<IBody> = styled(
         mobileLS = 1.14;
         tabletLS = 1.14;
         desktopLS = 1.14;
+        mobileLH = 'initial';
+        tabletLH = 'initial';
+        desktopLH = 'initial';
+        break;
+      case 'xl':
+        mobileFS = 22;
+        tabletFS = 30;
+        desktopFS = 36;
+        mobileLS = 0.5;
+        tabletLS = 0.5;
+        desktopLS = 0.5;
+        mobileLH = '30px';
+        tabletLH = '40px';
+        desktopLH = '50px';
         break;
       default:
         mobileFS = 16;
@@ -75,6 +98,9 @@ const Body: OverridableComponent<IBody> = styled(
         mobileLS = 1.14;
         tabletLS = 1.14;
         desktopLS = 1.14;
+        mobileLH = 'initial';
+        tabletLH = 'initial';
+        desktopLH = 'initial';
         break;
     }
 
@@ -87,24 +113,27 @@ const Body: OverridableComponent<IBody> = styled(
       align-items: ${alignItems ?? 'inherit'};
       font-family: ${override?.fontFamily ? override.fontFamily + ', ' : ''}Inter, sans-serif;
       font-weight: ${override?.fontWeight ?? 400};
-      color: ${typoOne};
+      color: ${override?.color ?? typoOne};
       padding: 12px;
       font-size: ${pxToRem(override?.fontSize?.mobile ?? mobileFS)}rem;
       letter-spacing: ${pxToRem(override?.letterSpacing?.mobile ?? mobileLS)}rem;
+      line-height: ${mobileLH};
 
       @media (min-width: ${tablet}px) {
         padding: 24px;
         font-size: ${pxToRem(override?.fontSize?.tablet ?? tabletFS)}rem;
         letter-spacing: ${pxToRem(override?.letterSpacing?.tablet ?? tabletLS)}rem;
+        line-height: ${tabletLH};
       }
 
       @media (min-width: ${desktop}px) {
         padding: 32px;
         font-size: ${pxToRem(override?.fontSize?.desktop ?? desktopFS)}rem;
         letter-spacing: ${pxToRem(override?.letterSpacing?.desktop ?? desktopLS)}rem;
+        line-height: ${desktopLH};
       }
     `;
   }}
 `;
 
-export default Body;
+export default memo(Body);
