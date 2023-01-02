@@ -1,10 +1,12 @@
-export type TypeBreakpoints = number | { mobile?: number; tablet?: number; desktop?: number };
+import { TypeBreakpoints } from '@/styles';
+
+export type TypeOverrideValue = number | Partial<TypeBreakpoints>;
 
 export type TypeFontWeights = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
 export type TypeOverrides = {
-  fontSize?: TypeBreakpoints;
-  letterSpacing?: TypeBreakpoints;
+  fontSize?: TypeOverrideValue;
+  letterSpacing?: TypeOverrideValue;
   fontWeight?: TypeFontWeights;
   color?: string;
   fontFamily?: string;

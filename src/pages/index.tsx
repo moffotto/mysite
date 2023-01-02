@@ -1,71 +1,28 @@
 import { NextPage } from 'next';
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
 
 import { Body, Headline } from '@/atoms';
+import { ThemeModeContext } from '@/context';
 import { TemplateFoliage } from '@/templates';
 
 const Home: NextPage<unknown> = () => {
+  const { mode } = useContext(ThemeModeContext);
+
   return (
-    <TemplateFoliage backgroundDepth={8}>
+    <TemplateFoliage backgroundDepth={2}>
       <Fragment>
-        <Headline overrides={{ color: 'red' }} size={'xl'}>
-          Sam
+        <Headline overrides={{ color: mode === 'light' ? 'red' : '#1c1c1c' }} size={'xl'}>
+          Hi
         </Headline>
-        <Body>
-          Look at me go, look at me go, lorem ipsum dolerus somethingoranother ancye ooyea
-          nuderstanduyeah athway Iyeay mayeah ayingseay?
+        <Body size={'xl'}>
+          {`Welcome! I'm Sam. It has always been my dream to have an online space where I can do all
+          the things social media allows me to do, but with 10x the work... and now here we are.
+          What you're seeing is the earliest of the early iterations on this idea - the park from
+          Westworld when it was still mostly Roombas. My hope is that this will one day become a
+          mindmap, equal parts contemplative practice & monument to my own special brand of
+          insanity.`}
         </Body>
-        <Headline size={'medium'}>Sam</Headline>
-        <Body>
-          Look at me go, look at me go, lorem ipsum dolerus somethingoranother ancye ooyea
-          nuderstanduyeah athway Iyeay mayeah ayingseay? Look at me go, look at me go, lorem ipsum
-          dolerus somethingoranother ancye ooyea nuderstanduyeah athway Iyeay mayeah ayingseay?
-        </Body>
-        <Body>
-          Look at me go, look at me go, lorem ipsum dolerus somethingoranother ancye ooyea
-          nuderstanduyeah athway Iyeay mayeah ayingseay? Look at me go, look at me go, lorem ipsum
-          dolerus somethingoranother ancye ooyea nuderstanduyeah athway Iyeay mayeah ayingseay?
-        </Body>
-        <Body>
-          Look at me go, look at me go, lorem ipsum dolerus somethingoranother ancye ooyea
-          nuderstanduyeah athway Iyeay mayeah ayingseay? Look at me go, look at me go, lorem ipsum
-          dolerus somethingoranother ancye ooyea nuderstanduyeah athway Iyeay mayeah ayingseay?
-        </Body>
-        <Body>
-          Look at me go, look at me go, lorem ipsum dolerus somethingoranother ancye ooyea
-          nuderstanduyeah athway Iyeay mayeah ayingseay? Look at me go, look at me go, lorem ipsum
-          dolerus somethingoranother ancye ooyea nuderstanduyeah athway Iyeay mayeah ayingseay?
-        </Body>
-        <Body>
-          Look at me go, look at me go, lorem ipsum dolerus somethingoranother ancye ooyea
-          nuderstanduyeah athway Iyeay mayeah ayingseay? Look at me go, look at me go, lorem ipsum
-          dolerus somethingoranother ancye ooyea nuderstanduyeah athway Iyeay mayeah ayingseay?
-        </Body>
-        <Body>
-          Look at me go, look at me go, lorem ipsum dolerus somethingoranother ancye ooyea
-          nuderstanduyeah athway Iyeay mayeah ayingseay? Look at me go, look at me go, lorem ipsum
-          dolerus somethingoranother ancye ooyea nuderstanduyeah athway Iyeay mayeah ayingseay?
-        </Body>
-        <Body>
-          Look at me go, look at me go, lorem ipsum dolerus somethingoranother ancye ooyea
-          nuderstanduyeah athway Iyeay mayeah ayingseay? Look at me go, look at me go, lorem ipsum
-          dolerus somethingoranother ancye ooyea nuderstanduyeah athway Iyeay mayeah ayingseay?
-        </Body>
-        <Body>
-          Look at me go, look at me go, lorem ipsum dolerus somethingoranother ancye ooyea
-          nuderstanduyeah athway Iyeay mayeah ayingseay? Look at me go, look at me go, lorem ipsum
-          dolerus somethingoranother ancye ooyea nuderstanduyeah athway Iyeay mayeah ayingseay?
-        </Body>
-        <Body>
-          Look at me go, look at me go, lorem ipsum dolerus somethingoranother ancye ooyea
-          nuderstanduyeah athway Iyeay mayeah ayingseay? Look at me go, look at me go, lorem ipsum
-          dolerus somethingoranother ancye ooyea nuderstanduyeah athway Iyeay mayeah ayingseay?
-        </Body>
-        <Body>
-          Look at me go, look at me go, lorem ipsum dolerus somethingoranother ancye ooyea
-          nuderstanduyeah athway Iyeay mayeah ayingseay? Look at me go, look at me go, lorem ipsum
-          dolerus somethingoranother ancye ooyea nuderstanduyeah athway Iyeay mayeah ayingseay?
-        </Body>
+        <Body size={'xl'}>Me casa es su casa, so feel free to look around.</Body>
       </Fragment>
     </TemplateFoliage>
   );

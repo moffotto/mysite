@@ -1,2 +1,2 @@
-export { default as IconMoon } from './moon';
-export { default as IconSun } from './sun';
+export { default as IconMoon } from './Moon';
+export { default as IconSun } from './Sun';

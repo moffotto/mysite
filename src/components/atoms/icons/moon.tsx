@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { memo,ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { TypeSvgIcon } from '@/types';
@@ -47,4 +47,4 @@ const Moon = styled(({ className, fill, height }: TypeSvgIcon): ReactElement => 
   pointer-events: none;
 `;
 
-export default Moon;
+export default memo(Moon);
